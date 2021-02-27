@@ -1,0 +1,158 @@
+
+
+.choiceContainer{
+    display:flex;
+    margin-bottom: 5px;
+    width: 100%;
+    font-size: 1.8rem;
+    border: 1px solid rgba(86, 165, 235, 0.25);
+    background: white;
+}
+.choiceContainer:hover{
+    cursor: pointer;
+    box-shadow: 0 4px 14px 0 rgba(86, 185, 235, 0.6);
+    transform: translateY(-1px);
+    transition: transform 0.15s;
+}
+.choicePrefix{
+    padding: 1.6rem 2.5rem;
+    background: #56a5eb;
+    color:white;
+}
+.choiceText{
+    padding: 1.5rem;
+    width: 100%;
+}
+.correct{
+    background:#28a745;
+    animation-name: bounce;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+}
+.incorrect{
+    background: #dc3545;
+    animation-name: shake;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+    animation-duration: 1s;
+}
+@keyframes bounce {
+    0%   { transform: scale(1,1)      translateY(0); }
+    10%  { transform: scale(1.1,.9)   translateY(0); }
+    30%  { transform: scale(.9,1.1)   translateY(-7px); }
+    50%  { transform: scale(1.05,.95) translateY(0); }
+    57%  { transform: scale(1,1)      translateY(-3px); }
+    64%  { transform: scale(1,1)      translateY(0); }
+    100% { transform: scale(1,1)      translateY(0); }
+}
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(4px, 0, 0);
+    }
+}
+.hidden{
+    display:none;
+}
+/* HUD STYLES */
+#hud{
+    display:flex;
+    justify-content: space-between;
+}
+.hudPrefix{
+    text-align: center;
+    font-size: 2rem;
+    color:#8bdb23;
+}
+.hudMainText{
+    text-align: center;
+}
+
+
+#loader {
+    margin:0;
+    padding:0;
+    background-color:#050210;
+    height: 100vh;
+    width: 100vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    position: relative;
+    margin:0 auto;
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(#fb5dad,#55fb9f,#b97aff);
+    border-radius: 100%;
+    animation: rotation 0.7s linear infinite;
+
+}
+
+/* ********************** FAT BORDER ********************** */
+.circle::after {
+    content:'';
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    bottom: 25px;
+    left: 25px;
+    border-radius: 100%;
+    background-color: #050210;
+
+}
+/* ********************** PULSATING INNER CIRCLE ********************** */
+.inner-circle{
+    background-color: #0c022e;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    margin: 25px;
+    border-radius: 50%;
+    z-index: 213;
+    animation: pulse 1s linear infinite;
+}
+/* ********************** BORDER GLOW ********************** */
+.circle > span:nth-child(1) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#fb5dad,#55fb9f,#b97aff);
+    border-radius: 100%;
+    filter: blur(50px);
+}
+/* ********************** ANIMATIONS ********************** */
+@keyframes pulse{
+    0%{
+        transform: scale(0.05);
+        opacity: 0.8;
+        
+    }
+    100%{
+        transform: scale(1);
+        opacity: 0.3;
+        
+    }
+}
+@keyframes rotation {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
