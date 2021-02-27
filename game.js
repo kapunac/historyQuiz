@@ -53,7 +53,7 @@ getNewQuestion = () => {
      if(acceptingAnswers.length === 0 || questionCounter >= MAX_QUESTION){
          localStorage.setItem('mostRecentScore', score);
          //GO TO END PAGE
-         return window.location.assign("historyQuiz/end.html");
+         return window.location.href = "end.html";
      }
     questionCounter++;
     questionCounterText.innerText = `${questionCounter}/${MAX_QUESTION}`;
